@@ -10,6 +10,14 @@ func Map[T, U any](xs []T, f func(T) U) []U {
 	return ys
 }
 
+func IndexMap[T, U any](xs []T, f func(int, T) U) []U {
+	ys := make([]U, 0, len(xs))
+	for i, x := range xs {
+		ys = append(ys, f(i, x))
+	}
+	return ys
+}
+
 func Filter[T any](xs []T, f func(T) bool) []T {
 	ys := make([]T, 0)
 	for _, x := range xs {
